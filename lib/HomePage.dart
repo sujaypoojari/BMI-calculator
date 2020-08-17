@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:bmi_calculator/ResultPage.dart';
+import 'package:bmi_calculator/styling.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,11 +10,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   //required fields
-  int age = 17;
-  int weight = 50;
-  int height = 170;
-  double maxHeight = 220;
-  double minHeight = 90;
+  int age, height, weight;
+  double maxHeight, minHeight;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      age = 17;
+      weight = 50;
+      height = 170;
+      maxHeight = 220;
+      minHeight = 90;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                     margin: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
-                        color: Colors.pink),
+                        color: profile),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -61,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                     margin: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
-                        color: Colors.pink),
+                        color: profile),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -92,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                       margin: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.pink),
+                          color: customSlider),
                       child: Column(
                         children: [
                           Padding(padding: EdgeInsets.all(10)),
@@ -128,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                         margin: EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.pink),
+                            color: waColor),
                         child: Column(
                           children: [
                             Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
@@ -168,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                         margin: EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.pink),
+                            color: waColor),
                         child: Column(
                           children: [
                             Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 10)),
@@ -213,11 +223,11 @@ class _HomePageState extends State<HomePage> {
                         margin: EdgeInsets.all(3),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.yellow),
+                            color: button),
                         child: MaterialButton(
                           child: Text("Calculate",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 23)),
                           onPressed: () => Navigator.push(

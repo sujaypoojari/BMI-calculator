@@ -11,6 +11,36 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
+  var comment = '';
+  var headline = '';
+  bmiResult(h, w) {
+    double result = (w / (h * h)) * 10000;
+
+    if (result < 18.5) {
+      setState(() {
+        comment = "You are under Weight";
+        headline = "UNDERWEIGHT";
+      });
+    } else if (result >= 18.5 && result < 25) {
+      setState(() {
+        comment = "You are at a healthy weight.";
+        headline = "NORMAL";
+      });
+    } else if (result > 25 && result <= 29.99) {
+      setState(() {
+        comment = "You are at overweight.";
+        headline = "OVERWEIGHT";
+      });
+    } else {
+      setState(() {
+        comment = "You are obese.";
+        headline = "OBESE";
+      });
+    }
+
+    return result.round();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +79,7 @@ class _ResultPageState extends State<ResultPage> {
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Text(
                           "18.5 - 25 kg/m",
                         ),
@@ -85,26 +115,4 @@ class _ResultPageState extends State<ResultPage> {
       ),
     );
   }
-}
-
-var comment = '';
-var headline = '';
-bmiResult(h, w) {
-  double result = (w / (h * h)) * 10000;
-
-  if (result < 18.5) {
-    comment = "You are under Weight";
-    headline = "UNDERWEIGHT";
-  } else if (result >= 18.5 && result < 25) {
-    comment = "You are at a healthy weight.";
-    headline = "NORMAL";
-  } else if (result > 25 && result <= 29.99) {
-    comment = "You are at overweight.";
-    headline = "OVERWEIGHT";
-  } else {
-    comment = "You are obese.";
-    headline = "OBESE";
-  }
-
-  return result.round();
 }
